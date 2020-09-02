@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="291" id="KGk-i7-Jjw" customClass="VideoHeaderCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="356" height="291"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="356" height="291"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vn7-3i-Gzr" customClass="YTPlayerView">
+                        <rect key="frame" x="0.0" y="0.0" width="356" height="291"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="481-bT-beO">
+                        <rect key="frame" x="160.5" y="128" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="DhB-bU-fq3"/>
+                            <constraint firstAttribute="height" constant="35" id="ObV-f5-l1K"/>
+                        </constraints>
+                        <state key="normal" image="ic_play"/>
+                        <connections>
+                            <action selector="playVideo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="twE-Wp-x61"/>
+                        </connections>
+                    </button>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="dhG-UN-Ps6">
+                        <rect key="frame" x="168" y="135" width="20" height="20"/>
+                    </activityIndicatorView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Vn7-3i-Gzr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1xL-ih-RVJ"/>
+                    <constraint firstItem="481-bT-beO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ksc-Cy-Nzi"/>
+                    <constraint firstItem="Vn7-3i-Gzr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LNW-gt-efa"/>
+                    <constraint firstItem="dhG-UN-Ps6" firstAttribute="centerY" secondItem="481-bT-beO" secondAttribute="centerY" id="Td2-aR-Zg9"/>
+                    <constraint firstAttribute="bottom" secondItem="Vn7-3i-Gzr" secondAttribute="bottom" id="Wp3-OE-XxT"/>
+                    <constraint firstAttribute="trailing" secondItem="Vn7-3i-Gzr" secondAttribute="trailing" id="XkE-Rv-OZw"/>
+                    <constraint firstItem="dhG-UN-Ps6" firstAttribute="centerX" secondItem="481-bT-beO" secondAttribute="centerX" id="lBe-OJ-oHR"/>
+                    <constraint firstItem="481-bT-beO" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="yDN-QY-LmS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="activityIndicator" destination="dhG-UN-Ps6" id="Ehs-3w-B53"/>
+                <outlet property="buttonPlay" destination="481-bT-beO" id="t2L-Kg-ltG"/>
+                <outlet property="youtubeView" destination="Vn7-3i-Gzr" id="2Ff-Il-tX9"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="209.26339285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_play" width="42.5" height="42.5"/>
+    </resources>
+</document>
