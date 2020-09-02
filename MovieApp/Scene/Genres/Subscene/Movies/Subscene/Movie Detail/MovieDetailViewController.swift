@@ -90,6 +90,32 @@ extension MovieDetailViewController: UITableViewDataSource {
         return self.viewModel.userReviews.count
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 2 ? 40 : 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 2 {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+            view.backgroundColor = #colorLiteral(red: 0.1798019707, green: 0.1798391342, blue: 0.1797970533, alpha: 1)
+            let labelTitle = UILabel()
+            labelTitle.translatesAutoresizingMaskIntoConstraints = false
+            labelTitle.font = .boldSystemFont(ofSize: 20)
+            labelTitle.textColor = .white
+            labelTitle.text = "Reviews"
+            
+            view.addSubview(labelTitle)
+            
+            labelTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+            labelTitle.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16).isActive = true
+            labelTitle.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            
+            return view
+        }
+        
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {

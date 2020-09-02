@@ -22,21 +22,43 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuU-Gp-jak">
-                        <rect key="frame" x="24" y="44" width="288" height="18"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuU-Gp-jak">
+                        <rect key="frame" x="24" y="44" width="288" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="4Sl-Ah-X74">
+                        <rect key="frame" x="24" y="41.5" width="288" height="34"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                    </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7AN-h4-Sum">
+                        <rect key="frame" x="0.0" y="71" width="320" height="1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="7z2-oP-r7P"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Gqs-Ax-0Gq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="0TY-uT-Q0N"/>
                     <constraint firstAttribute="trailing" secondItem="RuU-Gp-jak" secondAttribute="trailing" constant="8" id="BTJ-Wk-ecO"/>
                     <constraint firstAttribute="trailing" secondItem="Gqs-Ax-0Gq" secondAttribute="trailing" constant="16" id="Gnw-Gv-pYo"/>
+                    <constraint firstItem="4Sl-Ah-X74" firstAttribute="centerX" secondItem="RuU-Gp-jak" secondAttribute="centerX" id="Ids-8e-vxh"/>
+                    <constraint firstItem="4Sl-Ah-X74" firstAttribute="width" secondItem="RuU-Gp-jak" secondAttribute="width" id="JfM-Rh-f1y"/>
                     <constraint firstItem="Gqs-Ax-0Gq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="T1k-D0-KNQ"/>
+                    <constraint firstItem="7AN-h4-Sum" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZBD-ZJ-e3H"/>
+                    <constraint firstAttribute="trailing" secondItem="7AN-h4-Sum" secondAttribute="trailing" id="aew-Ze-Egg"/>
                     <constraint firstItem="RuU-Gp-jak" firstAttribute="leading" secondItem="Gqs-Ax-0Gq" secondAttribute="leading" constant="8" id="bim-4r-Tby"/>
+                    <constraint firstItem="4Sl-Ah-X74" firstAttribute="centerY" secondItem="RuU-Gp-jak" secondAttribute="centerY" id="lib-6Y-FnK"/>
                     <constraint firstAttribute="bottom" secondItem="RuU-Gp-jak" secondAttribute="bottom" priority="250" constant="16" id="pcP-wZ-0PO"/>
+                    <constraint firstAttribute="bottom" secondItem="7AN-h4-Sum" secondAttribute="bottom" id="qa2-b3-DSt"/>
+                    <constraint firstItem="4Sl-Ah-X74" firstAttribute="height" secondItem="RuU-Gp-jak" secondAttribute="height" constant="5" id="sC8-Wp-GhT"/>
                     <constraint firstItem="RuU-Gp-jak" firstAttribute="top" secondItem="Gqs-Ax-0Gq" secondAttribute="bottom" priority="750" constant="8" id="xBA-Bb-H8I"/>
                 </constraints>
             </tableViewCellContentView>
@@ -45,6 +67,7 @@
             <connections>
                 <outlet property="labelAuthor" destination="Gqs-Ax-0Gq" id="GcS-pC-yL4"/>
                 <outlet property="labelContent" destination="RuU-Gp-jak" id="Gi9-Lo-Dsd"/>
+                <outlet property="textViewContent" destination="4Sl-Ah-X74" id="Lib-UE-2mj"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="141.29464285714286"/>
         </tableViewCell>
