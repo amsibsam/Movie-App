@@ -17,6 +17,7 @@ class VideoHeaderCell: UITableViewCell {
     @IBOutlet weak var youtubeView: YTPlayerView!
     @IBOutlet weak var buttonPlay: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var viewLoadingContainer: UIView!
     
     var movieDetailViewModel: MovieDetailViewModel? {
         didSet {
@@ -27,7 +28,8 @@ class VideoHeaderCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        activityIndicator.isHidden = false
+        viewLoadingContainer.layer.cornerRadius = 8
+        viewLoadingContainer.isHidden = false
         activityIndicator.startAnimating()
         buttonPlay.isHidden = true
         youtubeView.isHidden = true
@@ -47,7 +49,7 @@ class VideoHeaderCell: UITableViewCell {
     
     @IBAction func playVideo(_ sender: UIButton) {
         youtubeView.playVideo()
-        activityIndicator.isHidden = false
+        viewLoadingContainer.isHidden = false
         activityIndicator.startAnimating()
     }
 }
@@ -57,7 +59,7 @@ extension VideoHeaderCell: YTPlayerViewDelegate {
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
         switch state {
         case .playing:
-            self.activityIndicator.isHidden = true
+            self.viewLoadingContainer.isHidden = true
             self.activityIndicator.stopAnimating()
         default:
             break
@@ -66,7 +68,7 @@ extension VideoHeaderCell: YTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         self.buttonPlay.isHidden = false
-        self.activityIndicator.isHidden = true
+        self.viewLoadingContainer.isHidden = true
         self.activityIndicator.stopAnimating()
     }
 }
