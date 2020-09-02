@@ -12,6 +12,7 @@ class UserReviewCell: UITableViewCell {
     
     @IBOutlet weak var labelAuthor: UILabel!
     @IBOutlet weak var labelContent: UILabel!
+    @IBOutlet weak var textViewContent: UITextView!
     
     var userReview: UserReview? {
         didSet {
@@ -31,6 +32,7 @@ class UserReviewCell: UITableViewCell {
         
         labelAuthor.text = userReview.author
         labelContent.text = userReview.content
+        textViewContent.text = userReview.content
     }
     
 }
