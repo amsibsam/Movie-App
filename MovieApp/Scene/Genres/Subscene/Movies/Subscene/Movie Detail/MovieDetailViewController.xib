@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="MovieApp" customModuleProvider="target">
+            <connections>
+                <outlet property="imageViewPoster" destination="qgo-z6-0Mf" id="Y0u-cy-19W"/>
+                <outlet property="tableViewContent" destination="Era-5N-uT1" id="DEF-2n-UbQ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewGradient" destination="SSP-FT-z4f" id="4fl-2k-WgQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qgo-z6-0Mf">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSP-FT-z4f">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Era-5N-uT1">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Era-5N-uT1" secondAttribute="bottom" id="AOc-dJ-wvt"/>
+                        <constraint firstItem="Era-5N-uT1" firstAttribute="top" secondItem="SSP-FT-z4f" secondAttribute="top" id="Egn-N5-2hl"/>
+                        <constraint firstItem="Era-5N-uT1" firstAttribute="leading" secondItem="SSP-FT-z4f" secondAttribute="leading" id="SPm-re-36m"/>
+                        <constraint firstAttribute="trailing" secondItem="Era-5N-uT1" secondAttribute="trailing" id="tkD-by-djW"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="SSP-FT-z4f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2Fr-yO-udg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qgo-z6-0Mf" secondAttribute="bottom" id="6Yd-kB-khr"/>
+                <constraint firstItem="qgo-z6-0Mf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9TM-sm-dlL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SSP-FT-z4f" secondAttribute="trailing" id="RxN-gM-nuj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SSP-FT-z4f" secondAttribute="bottom" id="VEh-X1-dbV"/>
+                <constraint firstItem="qgo-z6-0Mf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dwH-ci-CWB"/>
+                <constraint firstItem="SSP-FT-z4f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hXZ-ao-vVE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qgo-z6-0Mf" secondAttribute="trailing" id="jJH-dd-nox"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="81.696428571428569"/>
+        </view>
+    </objects>
+</document>
