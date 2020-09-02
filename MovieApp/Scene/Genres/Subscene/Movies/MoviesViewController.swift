@@ -29,6 +29,7 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        viewModel.getTitle()
         viewModel.getMovies(page: currentPage)
     }
     
@@ -38,6 +39,12 @@ class MoviesViewController: UIViewController {
     }
     
     private func bindView() {
+        
+        viewModel.titleDriver.drive(onNext: { [weak self] (title) in
+            self?.title = title
+        })
+        .disposed(by: disposeBag)
+        
         viewModel.refreshDriver.drive(onNext: { [weak self] (_) in
             self?.tableViewMovies.reloadData()
         })

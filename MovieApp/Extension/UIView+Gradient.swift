@@ -15,16 +15,16 @@ enum GradientDirection {
 }
 
 extension UIView {
-    func setGradient(startColor: UIColor, endColor: UIColor, direction: GradientDirection = .horizontal) {
+    func setGradient(startColor: UIColor, endColor: UIColor, verticalRadius: CGFloat = 0.45, horizontalRadius: CGFloat = 1.5, direction: GradientDirection = .horizontal) {
         let gradient: CAGradientLayer = CAGradientLayer()
 
         gradient.colors = [startColor.cgColor, endColor.cgColor]
         gradient.locations = [0.0 , 1.0]
         if direction == .horizontal {
             gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
-            gradient.endPoint = CGPoint(x: 1.5, y: 1.0)
+            gradient.endPoint = CGPoint(x: horizontalRadius, y: 1.0)
         } else {
-            gradient.startPoint = CGPoint(x: 1.0, y: 0.45)
+            gradient.startPoint = CGPoint(x: 1.0, y: verticalRadius)
             gradient.endPoint = CGPoint(x: 1.0, y: 0.0)
         }
         
