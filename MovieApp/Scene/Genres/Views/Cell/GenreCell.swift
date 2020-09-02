@@ -16,10 +16,12 @@ class GenreCell: UITableViewCell {
     
     @IBOutlet weak var labelGenre: UILabel!
     @IBOutlet weak var collectionViewMovies: UICollectionView!
+    @IBOutlet weak var buttonSeeMore: UIButton!
     
     var viewModel: GenreCellViewModel? {
         didSet {
             bindView()
+            viewModel?.getGenre()
             viewModel?.getMovies()
         }
     }
@@ -27,6 +29,7 @@ class GenreCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollectionView()
+        buttonSeeMore.layer.cornerRadius = 8
     }
     
     override func prepareForReuse() {

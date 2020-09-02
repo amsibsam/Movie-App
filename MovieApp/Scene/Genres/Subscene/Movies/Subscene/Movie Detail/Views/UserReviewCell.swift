@@ -9,16 +9,28 @@
 import UIKit
 
 class UserReviewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var labelAuthor: UILabel!
+    @IBOutlet weak var labelContent: UILabel!
+    
+    var userReview: UserReview? {
+        didSet {
+            bindView()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    private func bindView() {
+        guard let userReview = userReview else {
+            return
+        }
+        
+        labelAuthor.text = userReview.author
+        labelContent.text = userReview.content
     }
     
 }

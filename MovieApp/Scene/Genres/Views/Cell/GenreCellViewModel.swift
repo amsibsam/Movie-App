@@ -54,6 +54,14 @@ final class GenreCellViewModel {
         }
     }
     
+    func getGenre() {
+        if cellIndex >= genresViewModel.genres.count {
+            return
+        }
+        
+        genreSubject.on(.next(genresViewModel.genres[cellIndex]))
+    }
+    
     func openMovies() {
         genresViewModel.openMovies(withGenre: genresViewModel.genres[cellIndex].id)
     }
