@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol GenresNavigator {
-    func openMovies(withGenre id: Int)
+    func openMovies(withGenre genre: Genre)
     func openMovie(_ movie: Movie)
 }
 
@@ -31,13 +31,13 @@ final class GenresCoordinator: Coordinator {
 }
 
 extension GenresCoordinator: GenresNavigator {
-    func openMovies(withGenre id: Int) {
+    func openMovies(withGenre genre: Genre) {
         guard let navigationController = self.navigationMethod.rootViewController as? UINavigationController else {
             return
         }
         
         let moviesCoordinator = MoviesCoordinator(navigationMethod: navigationController)
-        moviesCoordinator.start(withGenreId: id)
+        moviesCoordinator.start(withGenre: genre)
     }
     
     func openMovie(_ movie: Movie) {

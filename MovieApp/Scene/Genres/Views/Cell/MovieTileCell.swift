@@ -38,7 +38,8 @@ class MovieTileCell: UICollectionViewCell {
         imageViewPoster.layer.cornerRadius = 8
         imageViewPoster.clipsToBounds = true
         imageViewPoster.contentMode = .scaleAspectFill
-        // Initialization code
+        imageViewPoster.setGradient(startColor: #colorLiteral(red: 0.05983794481, green: 0.05985610187, blue: 0.05983554572, alpha: 0.9007207306), endColor: #colorLiteral(red: 0.1686967611, green: 0.1687321961, blue: 0.1686921418, alpha: 0), verticalRadius: 0.7, direction: .vertical)
+        
     }
     
     private func bindView() {

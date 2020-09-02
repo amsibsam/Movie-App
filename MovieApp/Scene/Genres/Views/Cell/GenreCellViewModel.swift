@@ -63,7 +63,7 @@ final class GenreCellViewModel {
     }
     
     func openMovies() {
-        genresViewModel.openMovies(withGenre: genresViewModel.genres[cellIndex].id)
+        genresViewModel.openMovies(withGenre: genresViewModel.genres[cellIndex])
     }
     
     func openMovie(atIndex index: Int) {

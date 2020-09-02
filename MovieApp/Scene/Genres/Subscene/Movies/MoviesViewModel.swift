@@ -11,13 +11,20 @@ import RxSwift
 import RxCocoa
 
 final class MoviesViewModel {
-    private let genreId: Int
+    private let genre: Genre
     private let navigator: MoviesNavigator
     private let interactor: MoviesInteractor
     private let refreshSubject: PublishSubject<Void> = PublishSubject<Void>()
+    private let titleSubject: PublishSubject<String> = PublishSubject<String>()
     private let errorSubject: PublishSubject<String> = PublishSubject<String>()
     
     var movies: [Movie] = []
+    
+    var titleDriver: Driver<String> {
+        get {
+            titleSubject.asDriver(onErrorJustReturn: "")
+        }
+    }
     
     var refreshDriver: Driver<Void> {
         get {
@@ -31,14 +38,18 @@ final class MoviesViewModel {
         }
     }
     
-    init(genreId: Int, navigator: MoviesNavigator, interactor: MoviesInteractor) {
-        self.genreId = genreId
+    init(genre: Genre, navigator: MoviesNavigator, interactor: MoviesInteractor) {
+        self.genre = genre
         self.navigator = navigator
         self.interactor = interactor
     }
     
+    func getTitle() {
+        titleSubject.on(.next("\(genre.name) Movies"))
+    }
+    
     func getMovies(page: Int) {
-        interactor.getMovies(withGenreId: genreId, page: page, onSuccess: { [weak self] (movies) in
+        interactor.getMovies(withGenreId: genre.id, page: page, onSuccess: { [weak self] (movies) in
             if page == 1 {
                 self?.movies = movies
             } else {

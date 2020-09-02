@@ -44,8 +44,8 @@ final class GenresViewModel {
         }
     }
     
-    func openMovies(withGenre id: Int) {
-        self.navigator.openMovies(withGenre: id)
+    func openMovies(withGenre genre: Genre) {
+        self.navigator.openMovies(withGenre: genre)
     }
     
     func openMovie(_ movie: Movie) {
