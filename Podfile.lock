@@ -1,0 +1,40 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.6)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SDWebImage (5.9.0):
+    - SDWebImage/Core (= 5.9.0)
+  - SDWebImage/Core (5.9.0)
+  - youtube-ios-player-helper (1.0.2)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - RxCocoa
+  - RxSwift
+  - SDWebImage (~> 5.0)
+  - youtube-ios-player-helper
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SDWebImage
+    - youtube-ios-player-helper
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
+  youtube-ios-player-helper: 40b96e52c22445f0fdc43731cefa32c67075ff81
+
+PODFILE CHECKSUM: d5cf0245b4bc587e306d867bd20b9564c70539a0
+
+COCOAPODS: 1.9.3
