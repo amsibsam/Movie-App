@@ -104,7 +104,7 @@ extension MovieDetailViewController: UITableViewDataSource {
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewCell", for: indexPath) as! UserReviewCell
-            
+            cell.userReview = self.viewModel.userReviews[indexPath.row]
             if indexPath.row == self.viewModel.userReviews.count - 4 && indexPath.row > 4 {
                 self.currentPage += 1
                 self.viewModel.getUserReviews(page: self.currentPage)

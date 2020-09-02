@@ -31,18 +31,30 @@
                             <action selector="playVideo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="twE-Wp-x61"/>
                         </connections>
                     </button>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="dhG-UN-Ps6">
-                        <rect key="frame" x="168" y="135" width="20" height="20"/>
-                    </activityIndicatorView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vc2-DD-32E">
+                        <rect key="frame" x="153" y="120.5" width="50" height="50"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="dhG-UN-Ps6">
+                                <rect key="frame" x="15" y="15" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dhG-UN-Ps6" firstAttribute="centerY" secondItem="Vc2-DD-32E" secondAttribute="centerY" id="3dt-Dl-2x5"/>
+                            <constraint firstAttribute="width" constant="50" id="S0P-iB-QeD"/>
+                            <constraint firstItem="dhG-UN-Ps6" firstAttribute="centerX" secondItem="Vc2-DD-32E" secondAttribute="centerX" id="avr-h4-3Mq"/>
+                            <constraint firstAttribute="height" constant="50" id="dKy-Yk-tna"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Vn7-3i-Gzr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1xL-ih-RVJ"/>
+                    <constraint firstItem="Vc2-DD-32E" firstAttribute="centerX" secondItem="481-bT-beO" secondAttribute="centerX" id="63e-e4-SZh"/>
                     <constraint firstItem="481-bT-beO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ksc-Cy-Nzi"/>
                     <constraint firstItem="Vn7-3i-Gzr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LNW-gt-efa"/>
-                    <constraint firstItem="dhG-UN-Ps6" firstAttribute="centerY" secondItem="481-bT-beO" secondAttribute="centerY" id="Td2-aR-Zg9"/>
+                    <constraint firstItem="Vc2-DD-32E" firstAttribute="centerY" secondItem="481-bT-beO" secondAttribute="centerY" id="QcV-fF-B7S"/>
                     <constraint firstAttribute="bottom" secondItem="Vn7-3i-Gzr" secondAttribute="bottom" id="Wp3-OE-XxT"/>
                     <constraint firstAttribute="trailing" secondItem="Vn7-3i-Gzr" secondAttribute="trailing" id="XkE-Rv-OZw"/>
-                    <constraint firstItem="dhG-UN-Ps6" firstAttribute="centerX" secondItem="481-bT-beO" secondAttribute="centerX" id="lBe-OJ-oHR"/>
                     <constraint firstItem="481-bT-beO" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="yDN-QY-LmS"/>
                 </constraints>
             </tableViewCellContentView>
@@ -51,6 +63,7 @@
             <connections>
                 <outlet property="activityIndicator" destination="dhG-UN-Ps6" id="Ehs-3w-B53"/>
                 <outlet property="buttonPlay" destination="481-bT-beO" id="t2L-Kg-ltG"/>
+                <outlet property="viewLoadingContainer" destination="Vc2-DD-32E" id="Dpj-nm-7Qs"/>
                 <outlet property="youtubeView" destination="Vn7-3i-Gzr" id="2Ff-Il-tX9"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="209.26339285714286"/>
