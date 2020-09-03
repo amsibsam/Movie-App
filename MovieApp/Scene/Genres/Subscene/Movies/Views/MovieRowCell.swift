@@ -47,7 +47,7 @@ class MovieRowCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewGradient.setGradient(startColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), endColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2215834067))
+        viewGradient.setGradient(startColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), endColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0), horizontalRadius: 0.8)
         imageViewPoster.contentMode = .scaleAspectFill
     }
 

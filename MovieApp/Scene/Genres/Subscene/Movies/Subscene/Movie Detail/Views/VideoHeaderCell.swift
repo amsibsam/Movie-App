@@ -34,6 +34,7 @@ class VideoHeaderCell: UITableViewCell {
         viewLoadingContainer.isHidden = false
         activityIndicator.startAnimating()
         buttonPlay.isHidden = true
+        buttonPlay.layer.cornerRadius = 8
         youtubeView.isHidden = true
         youtubeView.delegate = self
         // Initialization code
