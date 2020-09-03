@@ -26,5 +26,6 @@ class MovieTileCellViewModel {
     
     func getMovie() {
         movieSubject.on(.next(movie))
+        movieSubject.on(.completed)
     }
 }

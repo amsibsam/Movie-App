@@ -39,8 +39,10 @@ final class GenresViewModel {
         self.interactor.getGenres(onSuccess: { [weak self] (genres) in
             self?.genres = genres
             self?.refreshSubject.on(.next(()))
+            self?.refreshSubject.on(.completed)
         }) { [weak self] (error) in
             self?.errorSubject.on(.next(error))
+            self?.errorSubject.on(.completed)
         }
     }
     

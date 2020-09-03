@@ -47,14 +47,18 @@ final class GenreCellViewModel {
     func getMovies() {
         if cellIndex >= genresViewModel.genres.count {
             errorSubject.on(.next("movies index not found"))
+            errorSubject.on(.completed)
             return
         }
         
         interactor.getMovies(withGenreId: genresViewModel.genres[cellIndex].id, onSuccess: { [weak self] (movies) in
             self?.movies = movies
             self?.refreshSubject.on(.next(()))
+            self?.refreshSubject.on(.completed)
+            self?.errorSubject.on(.completed)
         }) { [weak self] (error) in
             self?.errorSubject.on(.next(error))
+            self?.errorSubject.on(.completed)
         }
     }
     
@@ -65,6 +69,7 @@ final class GenreCellViewModel {
         }
         
         genreSubject.on(.next(genresViewModel.genres[cellIndex]))
+        genreSubject.on(.completed)
     }
     
     func openMovies() {

@@ -65,12 +65,12 @@ class GenreCell: UITableViewCell {
             self?.activityIndicator.startLoading(false)
         })
         .disposed(by: disposeBag)
-        
+
         viewModel?.genreDriver.drive(onNext: { [weak self] (genre) in
             guard let genre = genre else {
                 return
             }
-            
+
             self?.labelGenre.text = genre.name
         })
         .disposed(by: disposeBag)
