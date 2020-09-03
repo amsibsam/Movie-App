@@ -71,7 +71,6 @@ class MovieDetailViewController: UIViewController {
 }
 
 extension MovieDetailViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return UIScreen.main.bounds.height * 0.3
@@ -147,7 +146,6 @@ extension MovieDetailViewController: UITableViewDataSource {
 }
 
 extension MovieDetailViewController: UITableViewDelegate {
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if #available(iOS 13.0, *) {
             return

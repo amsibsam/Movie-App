@@ -9,7 +9,6 @@
 import Foundation
 
 final class MoviesInteractorImpl: MoviesInteractor {
-    
     let networkService: NetworkService
     
     init(networkService: NetworkService = NetworkServiceImpl()) {

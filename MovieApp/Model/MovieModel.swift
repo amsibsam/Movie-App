@@ -44,7 +44,6 @@ struct Movie: Codable {
 }
 
 extension Movie {
-    
     var backdropSmall: URL? {
         get {
             guard let backdropPath = self.backdropPath else {

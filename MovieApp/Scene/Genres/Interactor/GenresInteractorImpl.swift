@@ -9,7 +9,6 @@
 import Foundation
 
 final class GenresInteractorImpl: GenresInteractor {
-    
     let networkService: NetworkService
     
     init(networkService: NetworkService = NetworkServiceImpl()) {

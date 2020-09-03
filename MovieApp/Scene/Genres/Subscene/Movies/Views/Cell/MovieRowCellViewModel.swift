@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 class MovieRowCellViewModel {
-    
     private let movie: Movie?
     private let movieSubject: PublishSubject<Movie?> = PublishSubject<Movie?>()
     
