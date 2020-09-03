@@ -48,9 +48,11 @@ class GenresViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
-        viewModel.errorDriver.drive(onNext: { (errorMessage) in
-            // TODO: handle error later
-            print("error get genres \(errorMessage)")
+        viewModel.errorDriver.drive(onNext: { [weak self] (errorMessage) in
+            guard let self = self else {
+                return
+            }
+            UIAlertController.showAlert(in: self, withTitle: "Error", andMessage: errorMessage)
         })
         .disposed(by: disposeBag)
     }

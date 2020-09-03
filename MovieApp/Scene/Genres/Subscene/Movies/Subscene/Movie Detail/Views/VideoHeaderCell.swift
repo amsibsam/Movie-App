@@ -21,8 +21,10 @@ class VideoHeaderCell: UITableViewCell {
     
     var movieDetailViewModel: MovieDetailViewModel? {
         didSet {
-            bindView()
-            movieDetailViewModel?.getVideo()
+            if oldValue !== movieDetailViewModel {
+                bindView()
+                movieDetailViewModel?.getVideo()
+            }
         }
     }
     
@@ -52,6 +54,7 @@ class VideoHeaderCell: UITableViewCell {
         viewLoadingContainer.isHidden = false
         activityIndicator.startAnimating()
     }
+    
 }
 
 extension VideoHeaderCell: YTPlayerViewDelegate {
