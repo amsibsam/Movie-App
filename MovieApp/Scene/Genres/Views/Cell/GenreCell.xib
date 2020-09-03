@@ -57,10 +57,21 @@
                             <constraint firstAttribute="height" constant="1" id="lxn-wS-fRo"/>
                         </constraints>
                     </view>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="DeI-Re-Pm7">
+                        <rect key="frame" x="150" y="147.5" width="20" height="20"/>
+                    </activityIndicatorView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieO-Ta-4fk">
+                        <rect key="frame" x="139" y="147" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="upo-V2-t9n" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4Y3-ge-CCt"/>
                     <constraint firstAttribute="trailing" secondItem="yDb-qt-coI" secondAttribute="trailing" constant="8" id="76K-g4-B8U"/>
+                    <constraint firstItem="DeI-Re-Pm7" firstAttribute="centerX" secondItem="upo-V2-t9n" secondAttribute="centerX" id="Abu-OD-d6K"/>
+                    <constraint firstItem="DeI-Re-Pm7" firstAttribute="centerY" secondItem="upo-V2-t9n" secondAttribute="centerY" id="Arp-Hx-9Z5"/>
                     <constraint firstItem="WH7-mE-9gX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Olo-BD-DVS"/>
                     <constraint firstAttribute="trailing" secondItem="upo-V2-t9n" secondAttribute="trailing" id="U7i-eF-2Ny"/>
                     <constraint firstAttribute="trailing" secondItem="WH7-mE-9gX" secondAttribute="trailing" id="ZMW-6W-w6K"/>
@@ -69,13 +80,17 @@
                     <constraint firstItem="I8u-JU-GqD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="coE-mL-63X"/>
                     <constraint firstItem="yDb-qt-coI" firstAttribute="centerY" secondItem="I8u-JU-GqD" secondAttribute="centerY" id="iqw-0c-dnC"/>
                     <constraint firstItem="I8u-JU-GqD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="jOK-gF-3Ap"/>
+                    <constraint firstItem="ieO-Ta-4fk" firstAttribute="centerX" secondItem="upo-V2-t9n" secondAttribute="centerX" id="lcF-vA-950"/>
+                    <constraint firstItem="ieO-Ta-4fk" firstAttribute="centerY" secondItem="upo-V2-t9n" secondAttribute="centerY" id="oaS-E2-g44"/>
                     <constraint firstItem="yDb-qt-coI" firstAttribute="leading" secondItem="I8u-JU-GqD" secondAttribute="trailing" constant="8" id="xdk-TF-5LE"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityIndicator" destination="DeI-Re-Pm7" id="pvc-B6-m6K"/>
                 <outlet property="buttonSeeMore" destination="yDb-qt-coI" id="3te-6B-lNB"/>
                 <outlet property="collectionViewMovies" destination="upo-V2-t9n" id="FFD-6C-nzG"/>
+                <outlet property="labelErrorMessage" destination="ieO-Ta-4fk" id="pVZ-HM-FTa"/>
                 <outlet property="labelGenre" destination="I8u-JU-GqD" id="qHr-g9-hG0"/>
             </connections>
             <point key="canvasLocation" x="-168.11594202898553" y="83.035714285714278"/>
