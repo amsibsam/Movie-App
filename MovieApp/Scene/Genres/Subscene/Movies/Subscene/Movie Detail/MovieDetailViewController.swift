@@ -107,7 +107,7 @@ extension MovieDetailViewController: UITableViewDataSource {
             view.addSubview(labelTitle)
             
             labelTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-            labelTitle.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16).isActive = true
+            labelTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16).isActive = true
             labelTitle.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
             
             return view

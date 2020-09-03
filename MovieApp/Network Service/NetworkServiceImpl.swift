@@ -52,13 +52,6 @@ final class NetworkServiceImpl: NetworkService {
         
         urlSessionService.dataTask(with: urlRequest) { (data, response, error) in
             
-            do {
-                let json = try JSONSerialization.jsonObject(with: data ?? Data(), options: .allowFragments)
-                print("response \(json)")
-            } catch {
-                
-            }
-            
             guard error == nil else {
                 completion(.failure(.apiError))
                 return
