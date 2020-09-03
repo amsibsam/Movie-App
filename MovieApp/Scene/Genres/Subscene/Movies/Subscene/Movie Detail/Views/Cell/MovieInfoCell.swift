@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 class MovieInfoCell: UITableViewCell {
-    
     private let disposeBag: DisposeBag = DisposeBag()
     
     @IBOutlet weak var labelTitle: UILabel!

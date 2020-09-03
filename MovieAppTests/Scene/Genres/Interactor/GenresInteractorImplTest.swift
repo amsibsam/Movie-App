@@ -115,29 +115,3 @@ class GenresInteractorImplTest: XCTestCase {
         
     }
 }
-
-class URLSessionServiceMock: URLSessionService {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        
-    }
-}
-
-class NetworkServiceMock: NetworkService {
-    var errorResponse: ApiErrorModel?
-    var successResponse: Codable?
-    
-    required init(urlSessionService: URLSessionService = URLSessionServiceMock()) {
-        
-    }
-    
-    func request<D: Codable>(url: URL, method: HTTPMethod, query: [String: String]?, requestBody: [String: Any]?, completion: @escaping (Result<D, ApiErrorModel>) -> ()) {
-        if let successResponse = self.successResponse {
-            completion(.success(successResponse as! D))
-            return
-        }
-        
-        if let errorResponse = self.errorResponse {
-            completion(.failure(errorResponse))
-        }
-    }
-}

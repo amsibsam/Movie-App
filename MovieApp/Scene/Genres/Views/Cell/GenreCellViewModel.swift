@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 final class GenreCellViewModel {
-    
     private let cellIndex: Int
     private let genresViewModel: GenresViewModel
     private let interactor: GenresInteractor

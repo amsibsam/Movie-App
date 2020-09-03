@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 class GenreCell: UITableViewCell {
-    
     private let disposeBag: DisposeBag = DisposeBag()
     
     @IBOutlet weak var labelGenre: UILabel!

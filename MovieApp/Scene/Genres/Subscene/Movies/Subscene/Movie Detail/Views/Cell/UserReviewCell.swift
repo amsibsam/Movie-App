@@ -9,7 +9,6 @@
 import UIKit
 
 class UserReviewCell: UITableViewCell {
-    
     @IBOutlet weak var labelAuthor: UILabel!
     @IBOutlet weak var labelContent: UILabel!
     @IBOutlet weak var textViewContent: UITextView!

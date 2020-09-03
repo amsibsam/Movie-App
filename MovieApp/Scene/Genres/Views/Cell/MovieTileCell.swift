@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 
 class MovieTileCell: UICollectionViewCell {
-    
     private let disposeBag: DisposeBag = DisposeBag()
     
     @IBOutlet var labelTitle: UILabel!
