@@ -15,6 +15,7 @@ class MoviesViewController: UIViewController {
     private let disposeBag: DisposeBag = DisposeBag()
     private var currentPage: Int = 1
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableViewMovies: UITableView!
     
     init(viewModel: MoviesViewModel) {
@@ -30,6 +31,7 @@ class MoviesViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         viewModel.getTitle()
+        activityIndicator.startLoading(true)
         viewModel.getMovies(page: currentPage)
     }
     
@@ -47,12 +49,17 @@ class MoviesViewController: UIViewController {
         
         viewModel.refreshDriver.drive(onNext: { [weak self] (_) in
             self?.tableViewMovies.reloadData()
+            self?.activityIndicator.startLoading(false)
         })
         .disposed(by: disposeBag)
         
-        viewModel.errorDriver.drive(onNext: { (errorMessage) in
-            // TODO: handle error later
-            print("::error when get movies \(errorMessage)")
+        viewModel.errorDriver.drive(onNext: { [weak self] (errorMessage) in
+            guard let self = self else {
+                return
+            }
+            
+            self.activityIndicator.startLoading(false)
+            UIAlertController.showAlert(in: self, withTitle: "Error", andMessage: errorMessage)
         })
         .disposed(by: disposeBag)
     }

@@ -17,6 +17,8 @@ class GenreCell: UITableViewCell {
     @IBOutlet weak var labelGenre: UILabel!
     @IBOutlet weak var collectionViewMovies: UICollectionView!
     @IBOutlet weak var buttonSeeMore: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var labelErrorMessage: UILabel!
     
     var viewModel: GenreCellViewModel? {
         didSet {
@@ -28,6 +30,7 @@ class GenreCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        activityIndicator.startLoading(true)
         setupCollectionView()
         buttonSeeMore.layer.cornerRadius = 8
     }
@@ -51,12 +54,15 @@ class GenreCell: UITableViewCell {
     private func bindView() {
         viewModel?.refreshDriver.drive(onNext: { [weak self] (_) in
             self?.collectionViewMovies.reloadData()
+            self?.activityIndicator.startLoading(false)
+            self?.labelErrorMessage.isHidden = true
         })
         .disposed(by: disposeBag)
         
-        viewModel?.errorDriver.drive(onNext: { (error) in
-            // TODO: handle error later
-            print("error get movies based on genre \(error)")
+        viewModel?.errorDriver.drive(onNext: { [weak self] (error) in
+            self?.labelErrorMessage.isHidden = false
+            self?.labelErrorMessage.text = error
+            self?.activityIndicator.startLoading(false)
         })
         .disposed(by: disposeBag)
         
