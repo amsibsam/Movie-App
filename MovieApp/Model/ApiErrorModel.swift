@@ -9,7 +9,6 @@
 import Foundation
 
 enum ApiErrorModel: Error, CustomNSError {
-    
     case apiError
     case invalidEndpoint
     case invalidResponse

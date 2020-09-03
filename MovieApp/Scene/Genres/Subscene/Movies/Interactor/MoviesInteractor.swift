@@ -9,7 +9,6 @@
 import Foundation
 
 protocol MoviesInteractor {
-    
     var networkService: NetworkService { get }
     
     init(networkService: NetworkService)

@@ -12,7 +12,6 @@ import RxCocoa
 import SDWebImage
 
 class MovieRowCell: UITableViewCell {
-    
     private let disposeBag: DisposeBag = DisposeBag()
     
     @IBOutlet weak var labelTitle: UILabel!
