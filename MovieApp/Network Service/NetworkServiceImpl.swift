@@ -14,6 +14,12 @@ enum HTTPMethod: String {
 }
 
 final class NetworkServiceImpl: NetworkService {
+    private let urlSessionService: URLSessionService
+    
+    init(urlSessionService: URLSessionService = URLSessionServiceImpl()) {
+        self.urlSessionService = urlSessionService
+    }
+    
     func request<D>(url: URL, method: HTTPMethod, query: [String : String]?, requestBody: [String: Any]?, completion: @escaping (Result<D, ApiErrorModel>) -> ()) where D : Codable {
         guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             completion(.failure(.invalidEndpoint))
@@ -32,8 +38,6 @@ final class NetworkServiceImpl: NetworkService {
             return
         }
         
-        let urlSession = URLSession.shared
-        
         var urlRequest = URLRequest(url: finalURL, cachePolicy: URLRequest.CachePolicy.reloadIgnoringCacheData, timeoutInterval: 30)
         urlRequest.httpMethod = method.rawValue
         
@@ -46,7 +50,7 @@ final class NetworkServiceImpl: NetworkService {
             }
         }
         
-        urlSession.dataTask(with: urlRequest) { (data, response, error) in
+        urlSessionService.dataTask(with: urlRequest) { (data, response, error) in
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data ?? Data(), options: .allowFragments)
@@ -82,7 +86,7 @@ final class NetworkServiceImpl: NetworkService {
                 completion(.failure(.serializationError))
             }
             
-        }.resume()
+        }
         
     }
 }

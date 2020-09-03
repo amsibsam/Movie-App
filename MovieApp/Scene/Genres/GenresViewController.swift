@@ -63,7 +63,7 @@ class GenresViewController: UIViewController {
     private func setupTableView() {
         tableViewGenre.delegate = self
         tableViewGenre.dataSource = self
-        tableViewGenre.register(UINib(nibName: "GenreCell", bundle: Bundle.main), forCellReuseIdentifier: "GenreCell")
+        tableViewGenre.register(UINib(nibName: "GenreCell", bundle: Bundle(for: GenresViewController.self)), forCellReuseIdentifier: "GenreCell")
     }
 }
 
@@ -88,5 +88,7 @@ extension GenresViewController: UITableViewDataSource {
 }
 
 extension GenresViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

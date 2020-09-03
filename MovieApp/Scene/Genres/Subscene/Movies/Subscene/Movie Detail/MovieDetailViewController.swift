@@ -48,9 +48,9 @@ class MovieDetailViewController: UIViewController {
         tableViewContent.delegate = self
         tableViewContent.dataSource = self
         tableViewContent.estimatedRowHeight = UITableView.automaticDimension
-        tableViewContent.register(UINib(nibName: "VideoHeaderCell", bundle: Bundle.main), forCellReuseIdentifier: "VideoHeaderCell")
-        tableViewContent.register(UINib(nibName: "MovieInfoCell", bundle: Bundle.main), forCellReuseIdentifier: "MovieInfoCell")
-        tableViewContent.register(UINib(nibName: "UserReviewCell", bundle: Bundle.main), forCellReuseIdentifier: "UserReviewCell")
+        tableViewContent.register(UINib(nibName: "VideoHeaderCell", bundle: Bundle(for: MovieDetailViewController.self)), forCellReuseIdentifier: "VideoHeaderCell")
+        tableViewContent.register(UINib(nibName: "MovieInfoCell", bundle: Bundle(for: MovieDetailViewController.self)), forCellReuseIdentifier: "MovieInfoCell")
+        tableViewContent.register(UINib(nibName: "UserReviewCell", bundle: Bundle(for: MovieDetailViewController.self)), forCellReuseIdentifier: "UserReviewCell")
     }
     
     private func bindView() {
