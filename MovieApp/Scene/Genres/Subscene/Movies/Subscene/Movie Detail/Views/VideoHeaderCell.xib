@@ -21,10 +21,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="481-bT-beO">
-                        <rect key="frame" x="160.5" y="128" width="35" height="35"/>
+                        <rect key="frame" x="153" y="120.5" width="50" height="50"/>
+                        <color key="backgroundColor" red="0.81969779730000003" green="0.84682166579999996" blue="0.86274856330000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="DhB-bU-fq3"/>
-                            <constraint firstAttribute="height" constant="35" id="ObV-f5-l1K"/>
+                            <constraint firstAttribute="width" constant="50" id="DhB-bU-fq3"/>
+                            <constraint firstAttribute="height" constant="50" id="ObV-f5-l1K"/>
                         </constraints>
                         <state key="normal" image="ic_play"/>
                         <connections>
@@ -38,7 +39,7 @@
                                 <rect key="frame" x="15" y="15" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.81969779730000003" green="0.84682166579999996" blue="0.86274856330000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="dhG-UN-Ps6" firstAttribute="centerY" secondItem="Vc2-DD-32E" secondAttribute="centerY" id="3dt-Dl-2x5"/>
                             <constraint firstAttribute="width" constant="50" id="S0P-iB-QeD"/>
