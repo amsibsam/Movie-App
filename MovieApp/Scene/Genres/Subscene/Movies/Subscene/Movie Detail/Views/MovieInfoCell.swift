@@ -18,6 +18,7 @@ class MovieInfoCell: UITableViewCell {
     @IBOutlet weak var labelReleaseDate: UILabel!
     @IBOutlet weak var labelVote: UILabel!
     @IBOutlet weak var labelOverview: UILabel!
+    @IBOutlet weak var labelStatus: UILabel!
     
     var movieDetailViewModel: MovieDetailViewModel? {
         didSet {
@@ -27,6 +28,8 @@ class MovieInfoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        labelStatus.layer.cornerRadius = 8
+        labelStatus.clipsToBounds = true
         // Initialization code
     }
 
@@ -36,6 +39,7 @@ class MovieInfoCell: UITableViewCell {
             self?.labelReleaseDate.text = movie?.releaseDate
             self?.labelVote.text = "\(movie?.voteAverage ?? 0)"
             self?.labelOverview.text = movie?.overview
+            self?.labelStatus.text = movie?.status
         })
         .disposed(by: disposeBag)
     }

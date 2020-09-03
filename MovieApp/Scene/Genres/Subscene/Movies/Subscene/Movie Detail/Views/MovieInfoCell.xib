@@ -23,7 +23,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-08-08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8A-8a-lus">
-                        <rect key="frame" x="16" y="53" width="288" height="21"/>
+                        <rect key="frame" x="16" y="53" width="101" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="101" id="zXx-VH-six"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -47,6 +50,16 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0A-FJ-lHz">
+                        <rect key="frame" x="125" y="53" width="100" height="21"/>
+                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="h7I-Ow-APl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="a8A-8a-lus" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0gD-M8-d6w"/>
@@ -56,13 +69,15 @@
                     <constraint firstItem="6ke-ro-0Xs" firstAttribute="centerY" secondItem="cD4-M9-tq6" secondAttribute="centerY" id="NtT-Cc-KgT"/>
                     <constraint firstItem="Efa-ZT-RVT" firstAttribute="top" secondItem="cD4-M9-tq6" secondAttribute="bottom" priority="250" constant="24" id="RpO-8r-H1b"/>
                     <constraint firstItem="a8A-8a-lus" firstAttribute="top" secondItem="PYs-x0-EXh" secondAttribute="bottom" constant="8" id="TcD-bk-fG6"/>
+                    <constraint firstItem="u0A-FJ-lHz" firstAttribute="leading" secondItem="a8A-8a-lus" secondAttribute="trailing" constant="8" id="VGZ-op-MYn"/>
                     <constraint firstAttribute="trailing" secondItem="Efa-ZT-RVT" secondAttribute="trailing" constant="16" id="VNm-Ix-zbd"/>
                     <constraint firstAttribute="trailing" secondItem="PYs-x0-EXh" secondAttribute="trailing" constant="16" id="bnH-zD-b5W"/>
                     <constraint firstItem="cD4-M9-tq6" firstAttribute="top" secondItem="a8A-8a-lus" secondAttribute="bottom" constant="16" id="c9A-PA-SY6"/>
+                    <constraint firstItem="u0A-FJ-lHz" firstAttribute="centerY" secondItem="a8A-8a-lus" secondAttribute="centerY" id="fxn-yY-ql6"/>
                     <constraint firstItem="cD4-M9-tq6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="gmq-LJ-0WV"/>
                     <constraint firstItem="PYs-x0-EXh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="hyM-5f-nCZ"/>
                     <constraint firstItem="PYs-x0-EXh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="jU8-zG-1fV"/>
-                    <constraint firstAttribute="trailing" secondItem="a8A-8a-lus" secondAttribute="trailing" constant="16" id="uVf-VC-4rZ"/>
+                    <constraint firstItem="u0A-FJ-lHz" firstAttribute="height" secondItem="a8A-8a-lus" secondAttribute="height" id="mIF-8h-iLw"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,6 +85,7 @@
             <connections>
                 <outlet property="labelOverview" destination="Efa-ZT-RVT" id="LFQ-5o-Lhe"/>
                 <outlet property="labelReleaseDate" destination="a8A-8a-lus" id="qzv-HN-hAk"/>
+                <outlet property="labelStatus" destination="u0A-FJ-lHz" id="xlh-eu-U1w"/>
                 <outlet property="labelTitle" destination="PYs-x0-EXh" id="3DI-E1-QQx"/>
                 <outlet property="labelVote" destination="6ke-ro-0Xs" id="O4E-1E-YzF"/>
             </connections>

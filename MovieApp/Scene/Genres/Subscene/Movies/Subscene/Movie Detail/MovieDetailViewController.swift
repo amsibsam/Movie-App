@@ -47,6 +47,7 @@ class MovieDetailViewController: UIViewController {
     private func setupTableView() {
         tableViewContent.delegate = self
         tableViewContent.dataSource = self
+        tableViewContent.allowsSelection = false
         tableViewContent.estimatedRowHeight = UITableView.automaticDimension
         tableViewContent.register(UINib(nibName: "VideoHeaderCell", bundle: Bundle(for: MovieDetailViewController.self)), forCellReuseIdentifier: "VideoHeaderCell")
         tableViewContent.register(UINib(nibName: "MovieInfoCell", bundle: Bundle(for: MovieDetailViewController.self)), forCellReuseIdentifier: "MovieInfoCell")
@@ -146,6 +147,17 @@ extension MovieDetailViewController: UITableViewDataSource {
 }
 
 extension MovieDetailViewController: UITableViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if #available(iOS 13.0, *) {
+            return
+        }
+        
+        if scrollView.contentOffset.y < -110 {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
