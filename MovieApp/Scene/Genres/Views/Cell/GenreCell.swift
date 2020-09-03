@@ -45,7 +45,7 @@ class GenreCell: UITableViewCell {
         collectionViewLayout.scrollDirection = .horizontal
         collectionViewMovies.collectionViewLayout = collectionViewLayout
         
-        collectionViewMovies.register(UINib(nibName: "MovieTileCell", bundle: Bundle.main), forCellWithReuseIdentifier: "MovieTileCell")
+        collectionViewMovies.register(UINib(nibName: "MovieTileCell", bundle: Bundle(for: GenreCell.self)), forCellWithReuseIdentifier: "MovieTileCell")
     }
     
     private func bindView() {
