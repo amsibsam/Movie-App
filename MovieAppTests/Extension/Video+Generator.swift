@@ -10,6 +10,10 @@ import Foundation
 
 extension Video {
     static func generateDummyVideo() -> Video {
-        return Video(id: "1", iso639_1: nil, iso3166_1: nil, key: nil, name: nil, site: nil, size: nil, type: nil)
+        return Video(id: "1", iso639_1: nil, iso3166_1: nil, key: "dummy key", name: nil, site: "YouTube", size: nil, type: "Trailer")
+    }
+    
+    static func generateDummyVideoNonYoutube() -> Video {
+        return Video(id: "1", iso639_1: nil, iso3166_1: nil, key: "dummy key", name: nil, site: "NonYoutube", size: nil, type: "Trailer")
     }
 }

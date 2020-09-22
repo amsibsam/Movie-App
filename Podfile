@@ -7,8 +7,7 @@ target 'MovieApp' do
 
   # Pods for MovieApp
   pod 'IQKeyboardManagerSwift'
-  pod 'RxSwift'
-  pod 'RxCocoa'
+  pod 'Moya', '~> 14.0'
   pod 'SDWebImage', '~> 5.0'
   pod "youtube-ios-player-helper"
 

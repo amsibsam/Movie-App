@@ -7,79 +7,103 @@
 //
 
 import Foundation
+import Moya
 
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
 }
 
-final class NetworkServiceImpl: NetworkService {
-    private let urlSessionService: URLSessionService
-    
-    init(urlSessionService: URLSessionService = URLSessionServiceImpl()) {
-        self.urlSessionService = urlSessionService
+enum MovieAppNetworkService {
+    case genres
+    case movies(genreId: Int, page: Int)
+    case movie(id: Int)
+    case movieVideo(movieId: Int)
+    case userReviews(movieId: Int, page: Int)
+}
+
+extension MovieAppNetworkService: TargetType {
+    static let appKey = "5f50d7c26b528bb2395aa9c7fa08f4db" // secure the key in another file or configuration production implementation
+    var baseURL: URL {
+        return URL(string: "https://api.themoviedb.org/3")!
     }
     
-    func request<D>(url: URL, method: HTTPMethod, query: [String : String]?, requestBody: [String: Any]?, completion: @escaping (Result<D, ApiErrorModel>) -> ()) where D : Codable {
-        guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
-            completion(.failure(.invalidEndpoint))
-            return
+    var path: String {
+        switch self {
+        case .genres:
+            return "/genre/movie/list"
+        case .movies(_, _):
+            return "/discover/movie"
+        case .movie(let id):
+            return "/movie/\(id)"
+        case .movieVideo(let movieId):
+            return "/movie/\(movieId)/videos"
+        case .userReviews(let movieId, _):
+            return "/movie/\(movieId)/reviews"
         }
-        
-        var queryItems = [URLQueryItem(name: "api_key", value: AppServerConstant.appKey)]
-        if let query = query {
-            queryItems.append(contentsOf: query.map { URLQueryItem(name: $0.key, value: $0.value) })
+    }
+    
+    var method: Moya.Method {
+        return .get
+    }
+    
+    var sampleData: Data {
+        return "sample".data(using: .utf8)!
+    }
+    
+    var task: Task {
+        switch self {
+        case .genres, .movie(_), .movieVideo(_):
+            return .requestParameters(parameters: ["api_key": AppServerConstant.appKey], encoding: URLEncoding.queryString)
+        case .movies(let genreId, let page):
+            return .requestParameters(
+                parameters: [
+                    "api_key": AppServerConstant.appKey,
+                    "with_genres": "\(genreId)",
+                    "page": "\(page)"
+                ],
+                encoding: URLEncoding(destination: .queryString))
+        case .userReviews(_, let page):
+            return .requestParameters(
+            parameters: [
+                "api_key": AppServerConstant.appKey,
+                "page": "\(page)"
+            ],
+            encoding: URLEncoding(destination: .queryString))
         }
-        
-        urlComponents.queryItems = queryItems
-        
-        guard let finalURL = urlComponents.url else {
-            completion(.failure(.invalidEndpoint))
-            return
-        }
-        
-        var urlRequest = URLRequest(url: finalURL, cachePolicy: URLRequest.CachePolicy.reloadIgnoringCacheData, timeoutInterval: 30)
-        urlRequest.httpMethod = method.rawValue
-        
-        if let requestBody = requestBody {
-            do {
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: requestBody, options: .prettyPrinted)
-            } catch let error {
-                print("::error when try to serialized response \(error)")
-                completion(.failure(.invalidEndpoint))
-            }
-        }
-        
-        urlSessionService.dataTask(with: urlRequest) { (data, response, error) in
-            
-            guard error == nil else {
-                completion(.failure(.apiError))
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
-                completion(.failure(.invalidResponse))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(.emptyData))
-                return
-            }
-            
-            let jsonDecoder: JSONDecoder = JSONDecoder()
-            jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            do {
+    }
+    
+    var headers: [String : String]? {
+        return nil
+    }
+    
+    
+}
+
+final class NetworkServiceImpl: NetworkService {
+    private let provider: MoyaProvider<MovieAppNetworkService> = MoyaProvider<MovieAppNetworkService>(
+        callbackQueue: DispatchQueue.global(qos: .background)
+    )
+    
+    func request<D: Codable>(service: MovieAppNetworkService, completion: @escaping (Result<D, MoyaError>) -> ()) {
+        provider.request(service) { (result) in
+            switch result {
+            case .success(let response):
+                let jsonDecoder: JSONDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 
-                let response = try jsonDecoder.decode(D.self, from: data)
-                completion(.success(response))
-            } catch let error {
-                print("::error when try to serialized response \(error)")
-                completion(.failure(.serializationError))
+                do {
+                    let response = try jsonDecoder.decode(D.self, from: response.data)
+                    completion(.success(response))
+                } catch let error {
+                    print("::error when try to serialized response \(error)")
+                    completion(.failure(.objectMapping(error, response)))
+                }
+                break
+            case .failure(let error):
+                completion(.failure(error))
+                break
             }
-            
         }
-        
     }
 }

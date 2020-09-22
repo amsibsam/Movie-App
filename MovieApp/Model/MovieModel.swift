@@ -44,15 +44,6 @@ struct Movie: Codable {
 }
 
 extension Movie {
-    var backdropSmall: URL? {
-        get {
-            guard let backdropPath = self.backdropPath else {
-                return nil
-            }
-            
-            return URL(string: "https://image.tmdb.org/t/p/w80/\(backdropPath)")
-        }
-    }
     
     var posterMedium: URL? {
         get {
@@ -61,16 +52,6 @@ extension Movie {
             }
             
             return URL(string: "https://image.tmdb.org/t/p/w154/\(posterPath)")
-        }
-    }
-    
-    var posterBig: URL? {
-        get {
-            guard let posterPath = self.posterPath else {
-                return nil
-            }
-            
-            return URL(string: "https://image.tmdb.org/t/p/original/\(posterPath)")
         }
     }
 }

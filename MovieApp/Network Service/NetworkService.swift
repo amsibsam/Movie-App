@@ -7,9 +7,8 @@
 //
 
 import Foundation
+import Moya
 
 protocol NetworkService {
-    init(urlSessionService: URLSessionService)
-    
-    func request<D: Codable>(url: URL, method: HTTPMethod, query: [String: String]?, requestBody: [String: Any]?, completion: @escaping (Result<D, ApiErrorModel>) -> ())
+    func request<D: Codable>(service: MovieAppNetworkService, completion: @escaping (Result<D, MoyaError>) -> ())
 }
