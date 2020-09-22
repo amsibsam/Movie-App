@@ -18,9 +18,11 @@ class VideoHeaderCell: UITableViewCell, VideoHeaderCellViewProtocol {
     
     var presenter: VideoHeaderCellPresenterProtocol? {
         didSet {
-            if oldValue !== presenter {
-                presenter?.getVideo()
+            if oldValue != nil {
+                return
             }
+            
+            presenter?.getVideo()
         }
     }
     
