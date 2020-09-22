@@ -28,6 +28,8 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol, MovieDetailInteractorO
         }
     }
     
+    private var page: Int = 1
+    
     required init(movie: Movie, interface: MovieDetailViewProtocol, router: MovieDetailWireframeProtocol, interactor: MovieDetailInteractorInputProtocol) {
         self.view = interface
         self.router = router
@@ -42,18 +44,23 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol, MovieDetailInteractorO
         view?.showMoviePoster(moviePosterUrl: posterMedium)
     }
     
-    func getUserReview(page: Int) {
-        interactor?.getUserReviews(on: _movie.id, page: page)
+    func getUserReview() {
+        interactor?.getUserReviews(on: _movie.id, page: self.page)
     }
     
     // MARK: Interactor delegate
-    func onGetUserReviewsSucceed(userReviews: [UserReview], page: Int) {
-        if page == 1 {
+    func onGetUserReviewsSucceed(userReviews: [UserReview]) {
+        if userReviews.isEmpty {
+            return
+        }
+        
+        if self.page == 1 {
             _userReviews = userReviews
         } else {
             _userReviews.append(contentsOf: userReviews)
         }
         
+        self.page += 1
         Thread.runOnMainThread { [weak self] in
             self?.view?.refreshTableView()
         }

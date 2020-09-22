@@ -62,9 +62,9 @@ class MoviesInteractorPresenterMock: MoviesInteractorOutputProtocol {
     var page: Int = 0
     var errorMessage: String = ""
     
-    func onGetMoviesSucceed(movies: [Movie], page: Int) {
+    func onGetMoviesSucceed(movies: [Movie]) {
         self.movies = movies
-        self.page = page
+        self.page += 1
         isOnGetMoviesSucceedCalled = true
     }
     

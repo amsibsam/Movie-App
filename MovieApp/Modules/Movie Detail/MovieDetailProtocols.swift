@@ -23,7 +23,7 @@ protocol MovieDetailPresenterProtocol: class {
     
     /* ViewController -> Presenter */
     func getMoviePoster()
-    func getUserReview(page: Int)
+    func getUserReview()
 }
 
 
@@ -31,7 +31,7 @@ protocol MovieDetailPresenterProtocol: class {
 protocol MovieDetailInteractorOutputProtocol: class {
 
     /* Interactor -> Presenter */
-    func onGetUserReviewsSucceed(userReviews: [UserReview], page: Int)
+    func onGetUserReviewsSucceed(userReviews: [UserReview])
     func onGetUserReviewFailed(errorMessage: String)
 }
 

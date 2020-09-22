@@ -20,7 +20,7 @@ protocol MoviesPresenterProtocol: class {
     var movies: [Movie] { get }
     
     /* ViewController -> Presenter */
-    func getMovies(page: Int)
+    func getMovies()
     func getTitle()
     func openMovieDetail(atIndex index: Int)
 }
@@ -29,7 +29,7 @@ protocol MoviesPresenterProtocol: class {
 protocol MoviesInteractorOutputProtocol: class {
 
     /* Interactor -> Presenter */
-    func onGetMoviesSucceed(movies: [Movie], page: Int)
+    func onGetMoviesSucceed(movies: [Movie])
     func onGetMoviesFailed(errorMessage: String)
 }
 

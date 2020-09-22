@@ -12,7 +12,6 @@ import SDWebImage
 class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
     
     var presenter: MovieDetailPresenterProtocol?
-    private var currentPage: Int = 1
 
     @IBOutlet weak var tableViewContent: UITableView!
     @IBOutlet weak var imageViewPoster: UIImageView!
@@ -30,7 +29,7 @@ class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
         super.viewDidLoad()
         setupUI()
         presenter?.getMoviePoster()
-        presenter?.getUserReview(page: currentPage)
+        presenter?.getUserReview()
         // Do any additional setup after loading the view.
     }
     
@@ -121,8 +120,7 @@ extension MovieDetailViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewCell", for: indexPath) as! UserReviewCell
             cell.userReview = self.presenter?.userReviews[indexPath.row]
             if indexPath.row == (self.presenter?.userReviews.count ?? 0) - 4 && indexPath.row > 4 {
-                self.currentPage += 1
-                self.presenter?.getUserReview(page: self.currentPage)
+                self.presenter?.getUserReview()
             }
             
             return cell

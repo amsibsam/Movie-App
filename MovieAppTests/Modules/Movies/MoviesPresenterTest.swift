@@ -42,7 +42,7 @@ class MoviesPresenterTest: XCTestCase {
     
     func testGetMoviesSucceed() {
         moviesInteractorMock?.isSuccess = true
-        sutPresenter?.getMovies(page: 1)
+        sutPresenter?.getMovies()
         XCTAssertTrue(moviesViewMock!.isShowLoadingCalled)
         XCTAssertTrue(moviesViewMock!.isStopLoadingCalled)
         XCTAssertTrue(moviesViewMock!.isReloadTableViewCalled)
@@ -52,12 +52,12 @@ class MoviesPresenterTest: XCTestCase {
     func testGetMoviesSucceedLoadMore() {
         moviesInteractorMock?.isSuccess = true
         moviesInteractorMock?.moviesResponse = [Movie.generateDummyMovie()]
-        sutPresenter?.getMovies(page: 1)
+        sutPresenter?.getMovies()
         XCTAssertTrue(moviesViewMock!.isShowLoadingCalled)
         XCTAssertTrue(moviesViewMock!.isStopLoadingCalled)
         XCTAssertTrue(moviesViewMock!.isReloadTableViewCalled)
         moviesViewMock?.reset()
-        sutPresenter?.getMovies(page: 2)
+        sutPresenter?.getMovies()
         XCTAssertFalse(moviesViewMock!.isShowLoadingCalled)
         XCTAssertTrue(moviesViewMock!.isStopLoadingCalled)
         XCTAssertTrue(moviesViewMock!.isReloadTableViewCalled)
@@ -66,7 +66,7 @@ class MoviesPresenterTest: XCTestCase {
 
     func testGetMoviesFailed() {
         moviesInteractorMock?.isSuccess = false
-        sutPresenter?.getMovies(page: 1)
+        sutPresenter?.getMovies()
         XCTAssertFalse(moviesViewMock!.isReloadTableViewCalled)
         XCTAssertTrue(moviesViewMock!.isShowLoadingCalled)
         XCTAssertTrue(moviesViewMock!.isStopLoadingCalled)
@@ -80,7 +80,7 @@ class MoviesPresenterTest: XCTestCase {
     }
     
     func testOpenMovieDetailSuccess() {
-        sutPresenter?.getMovies(page: 1)
+        sutPresenter?.getMovies()
         sutPresenter?.openMovieDetail(atIndex: 0)
         XCTAssertTrue(moviesRouterMock!.isOpenMovieDetailCalled)
     }
@@ -130,7 +130,7 @@ class MoviesInteractorMock: MoviesInteractorInputProtocol {
     
     func getMovies(withGenreId id: Int, page: Int) {
         if isSuccess {
-            presenter?.onGetMoviesSucceed(movies: moviesResponse, page: page)
+            presenter?.onGetMoviesSucceed(movies: moviesResponse)
         } else {
             presenter?.onGetMoviesFailed(errorMessage: "Error")
         }

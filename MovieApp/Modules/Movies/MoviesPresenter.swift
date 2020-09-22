@@ -21,6 +21,7 @@ class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
     private let router: MoviesWireframeProtocol
     private let genre: Genre
     private var _movies: [Movie] = []
+    private var page: Int = 1
 
     init(genre: Genre, interface: MoviesViewProtocol, interactor: MoviesInteractorInputProtocol?, router: MoviesWireframeProtocol) {
         self.view = interface
@@ -29,7 +30,7 @@ class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
         self.genre = genre
     }
     
-    func getMovies(page: Int) {
+    func getMovies() {
         if page == 1 {
             view?.showLoading()
         }
@@ -56,13 +57,17 @@ class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
     
     // MARK: Interactor delegate
     
-    func onGetMoviesSucceed(movies: [Movie], page: Int) {
+    func onGetMoviesSucceed(movies: [Movie]) {
+        if movies.isEmpty {
+            return
+        }
+        
         if page == 1 {
             _movies = movies
         } else {
             _movies.append(contentsOf: movies)
         }
-        
+        page += 1
         Thread.runOnMainThread { [weak self] in
             self?.view?.stopLoading()
             self?.view?.reloadTableView()

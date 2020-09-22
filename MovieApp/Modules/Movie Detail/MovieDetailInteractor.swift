@@ -19,7 +19,7 @@ class MovieDetailInteractor: MovieDetailInteractorInputProtocol {
             case .failure(let error):
                 self?.presenter?.onGetUserReviewFailed(errorMessage: error.localizedDescription)
             case .success(let userReviewResponse):
-                self?.presenter?.onGetUserReviewsSucceed(userReviews: userReviewResponse.results, page: page)
+                self?.presenter?.onGetUserReviewsSucceed(userReviews: userReviewResponse.results)
             }
         }
     }

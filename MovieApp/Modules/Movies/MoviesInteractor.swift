@@ -19,7 +19,7 @@ class MoviesInteractor: MoviesInteractorInputProtocol {
             case .failure(let error):
                 self?.presenter?.onGetMoviesFailed(errorMessage: error.localizedDescription)
             case .success(let discoveryResponse):
-                self?.presenter?.onGetMoviesSucceed(movies: discoveryResponse.results ?? [], page: page)
+                self?.presenter?.onGetMoviesSucceed(movies: discoveryResponse.results ?? [])
             }
         }
     }

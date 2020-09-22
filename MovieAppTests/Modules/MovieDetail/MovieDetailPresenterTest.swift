@@ -46,16 +46,16 @@ class MovieDetailPresenterTest: XCTestCase {
     }
     
     func testGetUserReviewSucceed() {
-        sutPresenter?.getUserReview(page: 1)
+        sutPresenter?.getUserReview()
         XCTAssertTrue(movieDetailViewMock!.isRefreshTableViewCalled)
         XCTAssertTrue(sutPresenter?.userReviews.count == 1)
     }
     
     func testGetUserReviewLoadMore() {
-        sutPresenter?.getUserReview(page: 1)
+        sutPresenter?.getUserReview()
         XCTAssertTrue(movieDetailViewMock!.isRefreshTableViewCalled)
         XCTAssertTrue(sutPresenter?.userReviews.count == 1)
-        sutPresenter?.getUserReview(page: 2)
+        sutPresenter?.getUserReview()
         XCTAssertTrue(movieDetailViewMock!.isRefreshTableViewCalled)
         XCTAssertTrue(sutPresenter?.userReviews.count == movieDetailInteractorMock!.userReviewsResponse.count + 1)
     }
@@ -87,7 +87,7 @@ class MovieDetailInteractorMock: MovieDetailInteractorInputProtocol {
     
     func getUserReviews(on movieId: Int, page: Int) {
         if isSuccess {
-            presenter?.onGetUserReviewsSucceed(userReviews: userReviewsResponse, page: page)
+            presenter?.onGetUserReviewsSucceed(userReviews: userReviewsResponse)
         } else {
             presenter?.onGetUserReviewFailed(errorMessage: "error")
         }

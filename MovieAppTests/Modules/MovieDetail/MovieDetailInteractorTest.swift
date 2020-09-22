@@ -62,9 +62,9 @@ class MovieDetailInteractorPresenterMock: MovieDetailInteractorOutputProtocol {
     var page: Int = 0
     var errorMessage: String = ""
     
-    func onGetUserReviewsSucceed(userReviews: [UserReview], page: Int) {
+    func onGetUserReviewsSucceed(userReviews: [UserReview]) {
         self.userReviews = userReviews
-        self.page = page
+        self.page += 1
         isOnGetMovieDetailSucceedCalled = true
     }
     

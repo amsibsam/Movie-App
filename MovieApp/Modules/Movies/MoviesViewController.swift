@@ -11,7 +11,6 @@ import UIKit
 class MoviesViewController: UIViewController, MoviesViewProtocol {
         
     var presenter: MoviesPresenterProtocol?
-    private var currentPage: Int = 1
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableViewMovies: UITableView!
@@ -28,7 +27,7 @@ class MoviesViewController: UIViewController, MoviesViewProtocol {
         super.viewDidLoad()
         setupUI()
         presenter?.getTitle()
-        presenter?.getMovies(page: currentPage)
+        presenter?.getMovies()
     }
     
     private func setupUI() {
@@ -73,10 +72,8 @@ extension MoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = MovieRowCellRouter.createModule(with: self.presenter?.movies[indexPath.row], viewController: self, tableView: tableView)
         
-        if indexPath.row == (self.presenter?.movies.count ?? 0) - 3 {
-            print("::loadmore \(indexPath.row) \((self.presenter?.movies.count ?? 0) - 3)")
-            currentPage += 1
-            self.presenter?.getMovies(page: currentPage)
+        if indexPath.row == (self.presenter?.movies.count ?? 0) - 3 && indexPath.row > 4 {
+            self.presenter?.getMovies()
         }
         
         return cell
