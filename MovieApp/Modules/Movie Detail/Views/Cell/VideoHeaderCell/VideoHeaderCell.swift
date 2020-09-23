@@ -15,13 +15,10 @@ class VideoHeaderCell: UITableViewCell, VideoHeaderCellViewProtocol {
     @IBOutlet weak var buttonPlay: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var viewLoadingContainer: UIView!
+    var isYoutubeViewReady: Bool = false
     
     var presenter: VideoHeaderCellPresenterProtocol? {
         didSet {
-            if oldValue != nil {
-                return
-            }
-            
             presenter?.getVideo()
         }
     }
@@ -46,7 +43,9 @@ class VideoHeaderCell: UITableViewCell, VideoHeaderCellViewProtocol {
     
     // MARK: Presenter delegate
     func loadVideo(videoId: String) {
-        youtubeView.load(withVideoId: videoId)
+        if !isYoutubeViewReady {
+            youtubeView.load(withVideoId: videoId)
+        }
     }
     
     func hidePlayButton() {
@@ -68,6 +67,7 @@ extension VideoHeaderCell: YTPlayerViewDelegate {
     }
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        self.isYoutubeViewReady = true
         self.buttonPlay.isHidden = false
         self.viewLoadingContainer.isHidden = true
         self.activityIndicator.stopAnimating()
